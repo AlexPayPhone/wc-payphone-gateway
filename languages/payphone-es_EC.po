@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce - PayPhone Gateway\n"
 "POT-Creation-Date: 2020-10-22 15:11-0500\n"
-"PO-Revision-Date: 2023-02-14 16:18-0500\n"
+"PO-Revision-Date: 2020-10-22 15:12-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_EC\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: woocommerce-gateway-payphone.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -45,17 +45,15 @@ msgstr ""
 
 #: includes/settings/settings-pp.php:25 includes/wc-gateway-payphone.php:30
 msgid "PayPhone Application Payments"
-msgstr "Pagos con tarjeta de crédito y débito | Payphone"
+msgstr "Pagos con aplicación PayPhone"
 
 #: includes/settings/settings-pp.php:28
 msgid "Description:"
 msgstr "Descripción:"
 
 #: includes/settings/settings-pp.php:30
-msgid "Pay securely through PayPhone Secure Servers."
-msgstr ""
-"Utiliza tus tarjetas de crédito o débito Visa y Mastercard de cualquier "
-"banco, y en caso de tener el app de Payphone utiliza tu saldo."
+msgid "Use your Visa and Mastercard credit or debit cards from any bank, and if you have the Payphone app, use your Payphone balance."
+msgstr "Usa tus tarjetas de crédito o débito Visa y Mastercard de cualquier banco, y si tienes la aplicación Payphone, usa tu saldo de Payphone."
 
 #: includes/settings/settings-pp.php:31
 msgid "This controls the description which the user sees during checkout."
@@ -216,8 +214,8 @@ msgid "Payment result:"
 msgstr "Resultado de pago:"
 
 #: includes/wc-gateway-payphone.php:22
-msgid "Receive payments via PayPhone"
-msgstr "Recibe pagos con PayPhone"
+msgid "Credit and debit card payments | Payphone"
+msgstr "Pagos con tarjeta de crédito y débito | Payphone"
 
 #: includes/wc-gateway-payphone.php:103
 msgid "PayPhone"
