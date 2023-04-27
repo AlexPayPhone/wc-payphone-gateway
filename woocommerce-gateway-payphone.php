@@ -4,7 +4,7 @@
   Plugin Name: WooCommerce - PayPhone Gateway
   Plugin URI: https://www.payphone.app/business/
   Description: PayPhone Payment Gateway for WooCommerce. Recibe pagos en internet mediante payphone!
-  Version: 3.1.0
+  Version: 3.1.1
   Author: Payphone.
   Author URI: https://www.payphone.app/
   License: GNU General Public License v3.0

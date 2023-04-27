@@ -59,17 +59,25 @@ class WC_Gateway_PayPhone_Response {
                     //Recupera detalles del producto  en el carrito
                     $item_data = $item->get_data();
                     $productos="<tr><td>".substr(trim(strip_tags( $item_data['name'] )), 0, 50)."</td>"
-                    ."<td>X".$item_data['quantity']."</td>"
+                    ."<td>x".$item_data['quantity']."</td>"
                     ."<td>".round(round(($item_data['total']+$item_data['total_tax']),2),2)."</td></tr>"
                     ;
                     $productsTable .= $productos;  
                 }    
-                $styleCabezera="style='background-color: #f78131 !important; '";
+                if(!empty($order->get_shipping_method())){
+                    $envios="<tr><td>".substr(trim(strip_tags( $order->get_shipping_method() )), 0, 50)."</td>"
+                    ."<td>x1</td>"
+                    ."<td>".round(round(($order->get_shipping_total()+$order->get_shipping_tax()),2),2)."</td></tr>";
+                    $productsTable .=$envios;
+                }
+                $urlImagen=get_site_url() . '/wp-content/plugins/wc-payphone-gateway/assets/img/Payphone-pestania.png';
+                $styleCabezera="style='background-color: #ff7300 !important;box-shadow: 0 4px 15px #c85b02;'";
                 $styleCuerpo="vertical-align: middle;text-align: center;padding: 1px;margin: 5px;";
                 $tablaPedido="<table class='table'><thead class='thead-dark'>"
-                ."<tr><th ".$styleCabezera.">PRODUCTO</th><th ".$styleCabezera.">CANTIDAD</th><th ".$styleCabezera.">PRECIO</th></tr></thead>".$productsTable."</table>";
+                ."<tr><th ".$styleCabezera.">PRODUCTO</th><th ".$styleCabezera.">CANTIDAD</th><th ".$styleCabezera.">PRECIO $result->currency</th></tr></thead>".$productsTable."</table>";
                 $resultado= "<div id='detalle_pago'>"
-                    ."<h3>GRACIAS POR TU COMPRA </h3>"
+                    ."<a><img src='$urlImagen'></a>"
+                    ."<br><br>"
                     ."<label style='font-size: 20px;'>PAGO: <strong style='font-size: 25px;color: green;text-shadow: 2px 2px #caf389;'>". $result->transactionStatus."</strong></label><br><br>"
                     ."<table class='table'><thead class='thead-dark'>"
                     ."<tr><th ".$styleCabezera.">NÚMERO DEL PEDIDO</th><th ".$styleCabezera.">FECHA</th><th ".$styleCabezera.">TOTAL</th></tr></thead>"

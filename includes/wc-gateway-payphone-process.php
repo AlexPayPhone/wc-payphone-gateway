@@ -171,10 +171,26 @@ class WC_Gateway_PayPhone_Process {
                 "productDescription" => substr(trim(strip_tags( $product->get_short_description() )), 0, 50)
             ];    
             $lineItems[] = $productos;  
-        }    
-
+        } 
+        //DATOS DE ENVIO
+        if(!empty($order->get_shipping_method())){
+            $envio=[
+                "productName" => substr(trim(strip_tags( $order->get_shipping_method() )), 0, 50),
+                "unitPrice" => round(round($order->get_shipping_total(),2)*100,2),
+                "quantity" => 1,
+                "totalAmount" => round(round($order->get_shipping_total()+$order->get_shipping_tax(),2)*100,2),
+                "taxAmount" => round(round($order->get_shipping_tax(),2)*100,2) ,
+                "productSKU" => substr(trim(strip_tags( "Envio Order :#".$client_tx_id )), 0, 50),
+                "productDescription" => substr(trim(strip_tags( $order->get_shipping_to_display() )), 0, 50)
+            ]; 
+            $lineItems[] =$envio;
+        } 
         $orderArray=array_merge(Array("billTo"=>$billTo),Array("lineItems"=>$lineItems));
-        $request_params->order=$orderArray;
+        if(!empty($order->get_billing_country())){
+            $request_params->order=$orderArray;
+        }
+        //$request_params->optionalParameter="'".json_encode($orderArray)."'";
+        $request_params->optionalParameter="c:billTo/c:country/ ".$order->get_billing_country();
         return $request_params;
     }
 
