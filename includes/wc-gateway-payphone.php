@@ -160,7 +160,7 @@ class WC_Gateway_PayPhone extends WC_Payment_Gateway {
         } catch (WC_PayPhone_Exception $ex) {
             $ex = $ex->get_error();
             //$er=json_decode(json_encode($ex->get_error()));
-            if (isset($ex['Message']) ) { $Message=$ex->Message;
+            /*if (isset($ex['Message']) ) { $Message=$ex->Message;
             }else{ $Message=$ex->message; }
             $Errors;
             $ErrorDescriptions;
@@ -183,8 +183,8 @@ class WC_Gateway_PayPhone extends WC_Payment_Gateway {
                 $ErrorArray=Array("Message"=>$Message,"Errors"=>$Errors);
             }else{
                 $ErrorArray=Array("Message"=>$Message);
-            } 
-            //$errorJson= "<pre>".json_encode($er,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT )."</pre>"; 
+            } */
+            $ErrorArray= $ex;
             $css_error="style='background-color: #f1cbcb !important;
                                 color: #ff4343 !important;
                                 font-weight: bold !important;
@@ -195,7 +195,7 @@ class WC_Gateway_PayPhone extends WC_Payment_Gateway {
             .json_encode($ErrorArray,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)."</pre>";
             wc_add_notice($ErrorArray, 'error');
             //$this->log->error('Error: ' . $response->message);
-            do_action('wc_gateway_stripe_process_payment_error', $Message, $order);
+            do_action('wc_gateway_stripe_process_payment_error', $ErrorArray, $order);
 
             return array(
                 'result' => 'fail',
