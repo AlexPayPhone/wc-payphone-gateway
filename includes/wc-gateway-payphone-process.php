@@ -137,6 +137,7 @@ class WC_Gateway_PayPhone_Process {
         $request_params->Lang = explode('_', get_locale())[0];
         $request_params->Currency = $order->get_currency();
         $request_params->StoreId = $this->storeId;
+        $request_params->reference = "Pedido #".$client_tx_id ." en: ".get_bloginfo( 'name' )." ". get_site_url() ;
         
         //creamos el arreglo con datos de facturacion billTo con el formato requerido
         $billTo=[
@@ -186,11 +187,11 @@ class WC_Gateway_PayPhone_Process {
             $lineItems[] =$envio;
         } 
         $orderArray=array_merge(Array("billTo"=>$billTo),Array("lineItems"=>$lineItems));
-        if(!empty($order->get_billing_country())){
+        if(!empty($order->get_billing_country()) && !empty($order->get_billing_city())){
             $request_params->order=$orderArray;
         }
         //$request_params->optionalParameter="'".json_encode($orderArray)."'";
-        $request_params->optionalParameter="c:billTo/c:country/ ".$order->get_billing_country();
+        $request_params->optionalParameter="c:country/ ".$order->get_billing_country()." | c:city/".$order->get_billing_city() ;
         return $request_params;
     }
 
