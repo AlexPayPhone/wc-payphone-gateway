@@ -187,7 +187,7 @@ class WC_Gateway_PayPhone_Process {
             $lineItems[] =$envio;
         } 
         $orderArray=array_merge(Array("billTo"=>$billTo),Array("lineItems"=>$lineItems));
-        if(!empty($order->get_billing_country()) && !empty($order->get_billing_city())){
+        if(!empty($order->get_billing_country()) && !empty($order->get_billing_city()) && !empty($order->get_billing_state()) && !empty($order->get_billing_address_1())  ){
             $request_params->order=$orderArray;
         }
         //$request_params->optionalParameter="'".json_encode($orderArray)."'";
