@@ -158,7 +158,7 @@ class WC_Gateway_PayPhone extends WC_Payment_Gateway {
                 'redirect' => $response->payWithCard
             );
         } catch (WC_PayPhone_Exception $ex) {
-            $ex = $ex->get_error();
+            $ex = json_encode($ex);
             //$er=json_decode(json_encode($ex->get_error()));
             /*if (isset($ex['Message']) ) { $Message=$ex->Message;
             }else{ $Message=$ex->message; }
